@@ -1,3 +1,5 @@
+<!-- app/templates/segunda-pagina.hbs -->
+
 <div class="main-container">
   <header>
     <h1>Meu Aplicativo</h1>
@@ -14,17 +16,21 @@
     <table>
       <thead>
         <tr>
+          <th>Editar</th>
           <th>Nome</th>
-          <th>Email</th>
-          <th>Senha</th>
+          <th>Sobrenome</th>
+          <th>Telefone</th>
+          <th>Excluir</th>
         </tr>
       </thead>
       <tbody>
         {{#each this.model as |usuario|}}
           <tr>
-            <td>{{usuario.nome}}</td>
-            <td>{{usuario.email}}</td>
-            <td>{{usuario.senha}}</td>
+            <td><button {{on "click" (action "editarUsuario" usuario.id_usuario)}}>Editar</button></td>
+            <td>{{usuario.nome_usuario}}</td>
+            <td>{{usuario.sobrenome_usuario}}</td>
+            <td>{{usuario.telefone_usuario}}</td>
+            <td><button {{on "click" (action "excluirUsuario" usuario.id_usuario)}}>Excluir</button></td>
           </tr>
         {{/each}}
       </tbody>

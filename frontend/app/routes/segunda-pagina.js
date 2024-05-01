@@ -1,12 +1,20 @@
+// app/routes/segunda-pagina.js
+
 import Route from '@ember/routing/route';
 
 export default class SegundaPaginaRoute extends Route {
-  model() {
-    // Supondo que você esteja obtendo os dados dos usuários de algum serviço ou API
-    return [
-      { nome: 'Usuário 1', email: 'usuario1@example.com', senha: 'senha123' },
-      { nome: 'Usuário 2', email: 'usuario2@example.com', senha: 'senha456' },
-      // Adicione mais dados de usuários conforme necessário
-    ];
+  async model() {
+    try {
+      const response = await fetch('http://localhost:3000/api/users');
+      if (!response.ok) {
+        throw new Error('Erro ao buscar usuários');
+      }
+      const data = await response.json();
+      console.log(data); // Faça algo com os dados recebidos
+      return data;
+    } catch (error) {
+      console.error('Erro ao buscar usuários:', error);
+      return []; // Retorna um array vazio em caso de erro
+    }
   }
 }

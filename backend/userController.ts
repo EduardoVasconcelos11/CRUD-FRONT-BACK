@@ -15,7 +15,7 @@ export const getUsers = async (req: Request, res: Response) => {
 
 
 export const createUser = async (req: Request, res: Response) => {
-    
+    console.log(req.body)
     const {nomeUsuario, sobrenomeUsuario, telefoneUsuario } = req.body;
     if (!nomeUsuario || !sobrenomeUsuario || !telefoneUsuario) {
         return res.status(400).send('Nome, sobrenome e Telefone, são campos obrigatórios!');
@@ -52,7 +52,7 @@ export const updateUser = async (req: Request, res: Response) => {
 };
 
 export const deleteUser = async (req: Request, res: Response) => {
-    const {idUsuario} = req.body;
+    const idUsuario = req.params.userId;
     if (!idUsuario){
         return res.status(500).send('Id do usuário é um campo obrigatório');
     }

@@ -7,9 +7,9 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
-  // Defina suas rotas aqui
-  this.route('index', { path: '/' }); // Rota para a página inicial
-  this.route('segunda-pagina'); // Rota para a segunda página
+  this.route('index', { path: '/' });
+  this.route('segunda-pagina');
+  this.route('editar-usuario', { path: '/editar-usuario/:usuario_id' });
 });
 
 export default Router;

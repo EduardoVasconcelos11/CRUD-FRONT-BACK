@@ -1,0 +1,33 @@
+<!-- app/templates/segunda-pagina.hbs -->
+
+<div class="main-container">
+  <header>
+    <h1>Meu Aplicativo</h1>
+    <nav>
+      <ul>
+        <li><LinkTo @route="index">Home</LinkTo></li>
+        <li><LinkTo @route="segunda-pagina">Segunda Página</LinkTo></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <div class="table-container">
+   <!-- editar-usuario/template.hbs -->
+
+<h1>Editar Usuário</h1>
+
+ <form {{action "atualizarUsuario" on="submit" }}>
+
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" value={{this.nome}} {{on "input" this.updateNome}} >
+
+      <label for="sobrenome">Sobrenome:</label>
+      <input type="sobrenome" id="sobrenome" name="sobrenome" value={{this.sobrenome}} {{on "input" this.updateSobrenome}} >
+
+      <label for="telefone">telefone:</label>
+      <input type="text" id="telefone" name="telefone" value={{this.telefone}} {{on "input" this.updateTelefone}}  >
+
+      <button type="submit">teste</button>
+    </form>
+  </div>
+</div>

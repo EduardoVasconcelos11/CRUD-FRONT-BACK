@@ -1,25 +1,31 @@
 import Route from '@ember/routing/route';
+import { action } from '@ember/object';
+let userId = null;
 
 export default class IndexRoute extends Route {
-  model() {
+
+  model(params) {
+    userId = params.usuario_id;
     return {};
   }
 
   actions = {
-    async submitFormulario() {
+    async atualizarUsuario() {
       let nome = this.controller.nome;
       let sobrenome = this.controller.sobrenome;
       let telefone = this.controller.telefone;
 
       let payload = {
+        idUsuario: userId,
         nomeUsuario: nome,
         sobrenomeUsuario: sobrenome,
         telefoneUsuario: telefone,
       };
-      // console.log('Payload:', payload);
+
+      console.log('Payload:', payload);
       try {
-        let response = await fetch('http://localhost:3000/api/createUser', {
-          method: 'POST',
+        let response = await fetch('http://localhost:3000/api/updateUser/', {
+          method: 'PATCH', 
           headers: {
             'Content-Type': 'application/json',
           },
