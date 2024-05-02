@@ -1,9 +1,10 @@
 import Route from '@ember/routing/route';
 import { action } from '@ember/object';
+import { inject as service } from '@ember/service'
 let userId = null;
 
 export default class IndexRoute extends Route {
-
+  @service router;
   model(params) {
     userId = params.usuario_id;
     return {};
@@ -31,14 +32,7 @@ export default class IndexRoute extends Route {
           },
           body: JSON.stringify(payload),
         })
-          .then((response) => response.json())
-          .catch((error) => console.error('Erro ao enviar requisição:', error));
-        console.log(response);
-        if (response.ok) {
-          console.log('Requisição bem-sucedida!');
-        } else {
-          console.error('Erro na requisição:', response.statusText);
-        }
+        this.router.transitionTo('segunda-pagina');
       } catch (error) {
         console.error('Erro ao enviar requisição:', error);
       }

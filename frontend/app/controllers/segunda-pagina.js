@@ -13,7 +13,7 @@ export default class SegundaPaginaController extends Controller {
       method: 'DELETE',
       success: function(response) {
         console.log('Usuário excluído com sucesso:', response);
-        // Atualizar a página ou fazer algo após a exclusão do usuário
+        location.reload();
       },
       error: function(error) {
         console.error('Erro ao excluir usuário:', error);

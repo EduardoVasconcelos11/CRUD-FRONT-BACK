@@ -15,7 +15,6 @@ export const getUsers = async (req: Request, res: Response) => {
 
 
 export const createUser = async (req: Request, res: Response) => {
-    console.log(req.body)
     const {nomeUsuario, sobrenomeUsuario, telefoneUsuario } = req.body;
     if (!nomeUsuario || !sobrenomeUsuario || !telefoneUsuario) {
         return res.status(400).send('Nome, sobrenome e Telefone, são campos obrigatórios!');

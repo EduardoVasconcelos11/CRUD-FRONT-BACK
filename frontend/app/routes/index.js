@@ -24,10 +24,8 @@ export default class IndexRoute extends Route {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(payload),
-        })
-          .then((response) => response.json())
-          .catch((error) => console.error('Erro ao enviar requisição:', error));
-        console.log(response);
+        });
+
         if (response.ok) {
           console.log('Requisição bem-sucedida!');
         } else {
